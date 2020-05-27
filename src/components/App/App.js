@@ -47,14 +47,14 @@ class App extends React.Component {
     this.setState({ filter });
   };
 
-  filterCaseChange = (index) => {
+  changeFilterCase = (index) => {
     let filter = this.state.filter;
 
     filter.currentCaseIndex = index;
     this.setState({ filter });
   };
 
-  importantBtnClick = (todoUnit) => {
+  changeImportant = (todoUnit) => {
     let todoList = this.state.todoList;
     let index = todoList.findIndex((item) => item === todoUnit);
 
@@ -63,7 +63,7 @@ class App extends React.Component {
     this.setState({ todoList });
   };
 
-  doneBtnClick = (todoUnit) => {
+  changeDone = (todoUnit) => {
     let todoList = this.state.todoList;
     let index = todoList.findIndex((item) => item === todoUnit);
 
@@ -86,30 +86,34 @@ class App extends React.Component {
     }
   };
 
-  removeItem = (text) => {
+  removeItem = (todoUnitForRemove) => {
     this.setState({
       todoList: this.state.todoList.filter(
-        (todoUnit) => text !== todoUnit.text
+        (todoUnit) => todoUnit !== todoUnitForRemove
       ),
     });
   };
 
   render() {
+    const filterProps = {
+      filterCases: this.state.filter.cases,
+      currentCaseIndex: this.state.filter.currentCaseIndex,
+      changeFilterCase: this.changeFilterCase,
+      changeFilterText: this.changeFilterText,
+    };
+
+    const todoListProps = {
+      todoList: this.getVisibleTodoList(),
+      changeImportant: this.changeImportant,
+      changeDone: this.changeDone,
+      removeItem: this.removeItem,
+    };
+
     return (
       <div>
         <h1>Todo List</h1>
-        <Filter
-          filterCases={this.state.filter.cases}
-          currentCaseIndex={this.state.filter.currentCaseIndex}
-          filterCaseChange={this.filterCaseChange}
-          changeFilterText={this.changeFilterText}
-        />
-        <TodoList
-          todoList={this.getVisibleTodoList()}
-          importantBtnClick={this.importantBtnClick}
-          doneBtnClick={this.doneBtnClick}
-          removeItem={this.removeItem}
-        />
+        <Filter {...filterProps} />
+        <TodoList {...todoListProps} />
         <NewItem addNewTodoUnit={this.addNewTodoUnit} />
       </div>
     );

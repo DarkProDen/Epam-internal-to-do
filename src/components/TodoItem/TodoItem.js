@@ -2,17 +2,19 @@ import React from 'react';
 import './TodoItem.css';
 
 function TodoItem(props) {
+  const { todoUnit, changeImportant, changeDone, removeItem } = props;
+
   return (
     <div
       className={`list-group-item todo-item ${
-        props.todoUnit.important ? 'todo-item--bold' : ''
+        todoUnit.important ? 'todo-item--bold' : ''
       }`}
     >
-      {props.todoUnit.text}
+      {todoUnit.text}
       <span className="todo-item__buttons-wrap">
         <button
           onClick={() => {
-            props.removeItem(props.todoUnit.text);
+            removeItem(todoUnit);
           }}
           type="button"
           className="btn btn-outline-danger todo-item__button"
@@ -21,22 +23,22 @@ function TodoItem(props) {
         </button>
         <button
           onClick={() => {
-            props.importantBtnClick(props.todoUnit);
+            changeImportant(todoUnit);
           }}
           type="button"
           className={`btn btn${
-            props.todoUnit.important ? '' : '-outline'
+            todoUnit.important ? '' : '-outline'
           }-warning todo-item__button`}
         >
           <i className="fas fa-exclamation"></i>
         </button>
         <button
           onClick={() => {
-            props.doneBtnClick(props.todoUnit);
+            changeDone(todoUnit);
           }}
           type="button"
           className={`btn btn${
-            props.todoUnit.done ? '' : '-outline'
+            todoUnit.done ? '' : '-outline'
           }-success todo-item__button`}
         >
           <i className="fas fa-check"></i>

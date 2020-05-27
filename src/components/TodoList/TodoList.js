@@ -2,17 +2,20 @@ import React from 'react';
 import TodoItem from '../TodoItem';
 
 function TodoList(props) {
+  const { todoList, changeImportant, changeDone, removeItem } = props;
+
   return (
     <div className="list-group">
-      {props.todoList.map((element) => (
-        <TodoItem
-          todoUnit={element}
-          key={element.text}
-          importantBtnClick={props.importantBtnClick}
-          doneBtnClick={props.doneBtnClick}
-          removeItem={props.removeItem}
-        />
-      ))}
+      {todoList.map((todoUnit) => {
+        const todoItemProps = {
+          todoUnit,
+          changeImportant,
+          changeDone,
+          removeItem,
+        };
+
+        return <TodoItem key={todoUnit.text} {...todoItemProps} />;
+      })}
     </div>
   );
 }
