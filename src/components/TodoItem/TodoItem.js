@@ -3,7 +3,7 @@ import './TodoItem.css';
 
 function TodoItem(props) {
   return (
-    <li
+    <div
       className={`list-group-item todo-item ${
         props.todoUnit.important ? 'todo-item--bold' : ''
       }`}
@@ -42,7 +42,7 @@ function TodoItem(props) {
           <i className="fas fa-check"></i>
         </button>
       </span>
-    </li>
+    </div>
   );
 }
 
