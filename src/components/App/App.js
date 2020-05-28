@@ -32,9 +32,9 @@ class App extends React.Component {
       case 0:
         return todoListFilteredByText;
       case 1:
-        return todoListFilteredByText.filter((todoUnit) => !todoUnit.done);
+        return todoListFilteredByText.filter(({ done }) => !done);
       case 2:
-        return todoListFilteredByText.filter((todoUnit) => todoUnit.done);
+        return todoListFilteredByText.filter(({ done }) => done);
       default:
         return this.state.todoList;
     }

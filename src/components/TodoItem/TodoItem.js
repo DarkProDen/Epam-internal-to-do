@@ -5,11 +5,7 @@ function TodoItem(props) {
   const { todoUnit, changeImportant, changeDone, removeItem } = props;
 
   return (
-    <div
-      className={`list-group-item todo-item ${
-        todoUnit.important ? 'todo-item--bold' : ''
-      }`}
-    >
+    <div className={`todo-item ${todoUnit.important ? 'todo-item--bold' : ''}`}>
       {todoUnit.text}
       <span className="todo-item__buttons-wrap">
         <button

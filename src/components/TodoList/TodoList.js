@@ -5,7 +5,7 @@ function TodoList(props) {
   const { todoList, changeImportant, changeDone, removeItem } = props;
 
   return (
-    <div className="list-group">
+    <ul className="list-group">
       {todoList.map((todoUnit) => {
         const todoItemProps = {
           todoUnit,
@@ -14,9 +14,13 @@ function TodoList(props) {
           removeItem,
         };
 
-        return <TodoItem key={todoUnit.text} {...todoItemProps} />;
+        return (
+          <ui className="list-group-item">
+            <TodoItem key={todoUnit.text} {...todoItemProps} />
+          </ui>
+        );
       })}
-    </div>
+    </ul>
   );
 }
 

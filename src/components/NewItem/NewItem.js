@@ -8,16 +8,15 @@ class NewItem extends React.Component {
     this.state = { text: '' };
   }
 
+  onSubmitHandler = (e) => {
+    e.preventDefault();
+    this.props.addNewTodoUnit(this.state.text);
+    this.setState({ text: '' });
+  };
+
   render() {
     return (
-      <form
-        className="new-item"
-        onSubmit={(e) => {
-          e.preventDefault();
-          this.props.addNewTodoUnit(this.state.text);
-          this.setState({ text: '' });
-        }}
-      >
+      <form className="new-item" onSubmit={this.onSubmitHandler}>
         <input
           value={this.state.text}
           onChange={(e) => {

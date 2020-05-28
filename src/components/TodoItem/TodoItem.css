@@ -1,7 +1,6 @@
 .todo-item {
   display: flex;
   align-items: center;
-  padding: 10px 20px;
 }
 
 .todo-item--bold {
