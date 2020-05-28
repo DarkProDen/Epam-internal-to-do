@@ -41,7 +41,7 @@ class App extends React.Component {
   }
 
   changeFilterText = (text) => {
-    let filter = this.state.filter;
+    let filter = { ...this.state.filter };
 
     filter.text = text;
     this.setState({ filter });
