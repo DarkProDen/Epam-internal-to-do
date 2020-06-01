@@ -1,0 +1,8 @@
+.new-item {
+  display: flex;
+  margin-top: 10px;
+}
+
+.new-item__text {
+  margin-right: 10px;
+}
