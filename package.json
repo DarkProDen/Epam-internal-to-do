@@ -14,7 +14,9 @@
   "scripts": {
     "start": "react-scripts start --open",
     "build": "react-scripts build",
-    "test": "echo tests not implemented"
+    "test": "echo tests not implemented",
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
